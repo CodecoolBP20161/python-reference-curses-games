@@ -16,7 +16,7 @@ def main(scr):
     title = ' Hello snake! '
     win.addstr(0, (curses.COLS - len(title)) // 2, title)
 
-    while key != 27:
+    while key != 27:            # not Esc is pressed
         win.timeout(100)        # wait 0.1 sec
 
         event = win.getch()     # get the code of pressed key (if nothing pressed, this returns -1)
@@ -25,15 +25,15 @@ def main(scr):
 
         # Snake logic ;)
 
-        win.addch(last[0], last[1], ' ')
+        win.addch(last[0], last[1], ' ')            # clear last character of the snake
 
-        win.addch(snake[0][0], snake[0][1], 'x')
+        win.addch(snake[0][0], snake[0][1], 'x')    # add a new character where the snake moved
         win.refresh()
 
     game_over = 'Game Over!'
     win.addstr(curses.LINES // 2, (curses.COLS - len(game_over)) // 2, game_over)
     win.refresh()
 
-    time.sleep(3)
+    time.sleep(3)       # wait to show the Game Over text for 3 secs
 
-curses.wrapper(main)
+curses.wrapper(main)    # use curses wrapper
